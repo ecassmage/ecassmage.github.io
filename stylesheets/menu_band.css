@@ -1,0 +1,55 @@
+:root{
+    --header_band_color: black;
+    --header_band_word_color: white;
+    --header_band_hover_go_to_page: #322f2f;
+    --header_band_hover_current_page: var(--header_band_color);
+    --header_band_word_current_page: #7a7a7a;
+}
+
+ul.menu_band {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--header_band_color);
+}
+
+li.menu_band {
+}
+
+li a.menu_band {
+    float: right;
+    display: block;
+    color: var(--header_band_word_color);
+    text-align: center;
+    padding: 18px 20px;
+    text-decoration: none;
+}
+
+
+li .save_band {
+    float: left;
+    display: block;
+    color: var(--header_band_word_color);
+    text-align: center;
+    padding: 18px 20px;
+    text-decoration: none;
+}
+
+li a.menu_band:hover {
+    background-color: var(--header_band_hover_go_to_page);
+}
+
+li a.current_page{
+    color: var(--header_band_word_current_page);
+}
+
+li a.current_page:hover{
+    background-color: var(--header_band_hover_current_page);
+}
+
+
+.save_band:hover{
+    cursor: pointer;
+    color: darkgrey;
+}

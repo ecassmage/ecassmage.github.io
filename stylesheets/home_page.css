@@ -1,0 +1,73 @@
+.header{
+    font-size: 60px;
+    text-align:center;
+}
+
+.button_alpha{
+    opacity: 0.5;
+    margin: 100px;
+}
+
+.button_alpha:hover{
+    opacity: 0.8;
+}
+
+/* Most of the stuff below here was brought to you by Google Search */
+.slideshow{
+    max-width: 1000px;
+    max-height: 750px;
+    height: 500px;
+    width: 750px;
+    position: relative;
+    margin: auto;
+}
+.image {
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 500px;
+    max-height: 500px;
+    vertical-align: bottom;
+}
+
+.mySlides {
+    display: none;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 10px 10px 10px 10px;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .25}
+    to {opacity: 1}
+}

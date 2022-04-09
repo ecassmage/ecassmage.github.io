@@ -1,0 +1,82 @@
+table td.form_row{
+
+}
+
+.form_table{
+    border: 5px black solid;
+    padding: 3.5%;
+    border-radius: 25px;
+    /* white-space: nowrap; */
+    width: 100%;
+}
+
+.form_size{
+    /* width: fit-content; */
+}
+
+table.form_table td{
+    text-align:left;
+    padding: 4px;
+    margin: 5px;
+}
+
+.form_label {
+    font-size: 25px;
+}
+
+.form_entry{
+    font-size: 20px;
+    text-align:center !important;
+
+}
+
+.parent_table{
+    position: relative;
+    margin-top: 3%;
+    padding: 5% 5% 2% 5%;
+    border: 15px black solid;
+    border-radius: 25px;
+    width: 75%;
+    background-color: rgb(108, 32, 32);
+}
+table.parent_table input{
+    margin: 1%;
+}
+
+input[type="button"] {
+    font-size: 15px;
+    border-radius: 25px;
+    background-color:  rgb(175, 170, 170);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+  }
+
+input[type="button"]:hover {
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(81, 79, 79);
+}
+
+#Save{
+    font-size: 15px;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: rgb(175, 170, 170);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease; 
+}
+
+#Save:hover{
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(81, 79, 79);
+}

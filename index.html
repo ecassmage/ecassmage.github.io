@@ -1,7 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Front End</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/home_page.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/general_overrides.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/menu_band.css"/>
+    <script type="text/javascript" src="scripts/slideshow.js"></script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <ul class="menu_band">
+        <li class="menu_band"><a class="menu_band" href="patient.html">Patient</a></li>
+        <li class="menu_band"><a class="menu_band" href="nurse.html">Nurse</a></li>
+        <li class="menu_band"><a class="menu_band" href="doctor.html">Doctor</a></li>
+        <li class="menu_band"><a class="menu_band current_page">Home</a></li>
+    </ul>
+    <h1 class="header">Welcome to the Hospital Systems web page</h1>
+    <div class="slideshow">
+        <button class="prev"><img src="images/homepage/arrow_pt_left.png" alt="arrow_left" onclick="change_image('left')"></button>
+        <div>
+            <img class="image fade" src="images/homepage/Harold.jpg" alt="img1" id="homepage_image_show">
+        </div>
+        <button class="next"><img src="images/homepage/arrow_pt_right.png" alt="arrow_right" onclick="change_image('right')"></button>
+    </div>
 </body>
 </html>

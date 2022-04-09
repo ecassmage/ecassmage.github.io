@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Patient ID</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/patient.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/general_overrides.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/menu_band.css"/>
+<!--    <script type="text/javascript" src="slideshow.js"></script>-->
+    <script type="text/javascript" src="scripts/dataset.js"></script>
+</head>
+<body>
+    <header>
+    <ul class="menu_band">
+        <li class="menu_band"><a class="menu_band current_page">Patient</a></li>
+        <li class="menu_band"><a class="menu_band" href="nurse.html">Nurse</a></li>
+        <li class="menu_band"><a class="menu_band" href="doctor.html">Doctor</a></li>
+        <li class="menu_band"><a class="menu_band" href="index.html">Home</a></li>
+        <li class="menu_band">
+            <div>
+                <label class="save_band" for="loaded_file">LOAD</label>
+                <input type="file" id="loaded_file" class="save_band" style="visibility:hidden" accept=".txt" onclick="load('patients')">
+            </div>
+        </li>
+    </ul>
+    </header>
+    <table class="parent_table" style="text-align:center">
+        <tr>
+            <td>
+                <form>
+                    <table class="form_table">
+                        <tr>
+                            <td class="form_label">
+                                <label>Hospital:</label>
+                            </td>
+                            <td class="form_entry">
+                                <div>
+                                    <input type="radio" id="hospital_0" name="hospital" value="0" onchange="update_hospital(hospital.value, 'patients')"><label for="hospital_0">Hospital 0</label>
+                                    <input type="radio" id="hospital_1" name="hospital" value="1" onchange="update_hospital(hospital.value, 'patients')"><label for="hospital_1">Hospital 1</label>
+                                    <input type="radio" id="hospital_2" name="hospital" value="2" onchange="update_hospital(hospital.value, 'patients')"><label for="hospital_2">Hospital 2</label>
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form_label">
+                                <label>Room Number: </label>
+                            </td>
+                            <td class="form_entry">
+                                <input type="radio" id="room_000" name="room" value="0"><label for="room_000">Room 0</label>
+                                <input type="radio" id="room_001" name="room" value="1"><label for="room_001">Room 1</label>
+                                <input type="radio" id="room_002" name="room" value="2"><label for="room_002">Room 2</label>
+                                <input type="radio" id="room_003" name="room" value="3"><label for="room_003">Room 3</label>
+                                <input type="radio" id="room_004" name="room" value="4"><label for="room_004">Room 4</label>
+                                <br>
+                                <input type="radio" id="room_005" name="room" value="5"><label for="room_005">Room 5</label>
+                                <input type="radio" id="room_006" name="room" value="6"><label for="room_006">Room 6</label>
+                                <input type="radio" id="room_007" name="room" value="7"><label for="room_007">Room 7</label>
+                                <input type="radio" id="room_008" name="room" value="8"><label for="room_008">Room 8</label>
+                                <input type="radio" id="room_009" name="room" value="9"><label for="room_009">Room 9</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form_label">
+                                <label>Gender:</label>
+                            </td>
+                            <td class="form_entry">
+                                <label>Gender:</label>
+                                <input type="radio" id="male" name="gender" value="0"><label for="male">Male</label>
+                                <input type="radio" id="female" name="gender" value="1"><label for="female">Female</label>
+                                <input type="radio" id="other" name="gender" value="2"><label for="other">Other</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form_label">
+                                <label for="disease">Disease: </label>
+                            </td>
+                            <td class="form_entry">
+                                <select id="disease" name="disease_list">
+                                    <option value="0">Unknown</option>
+                                    <option value="1">Bubonic Plague</option>
+                                    <option value="2">Covid-19</option>
+                                    <option value="3">Small Pox</option>
+                                    <option value="4">Mumps</option>
+                                    <option value="5">Measles</option>
+                                    <option value="6">Hay Fever</option>
+                                    <option value="7">Yellow Fever</option>
+                                    <option value="8">Kharaa</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form_label">
+                                <label for="length_of_stay">expected length of stay: </label>
+                            </td>
+                            <td class="form_entry">
+                                <select id="length_of_stay" name="length_of_stay_list">
+                                    <option value="0">Short Term (< 1 day)</option>
+                                    <option value="1">Medium Term (1 - 7 days)</option>
+                                    <option value="2">Long Term (> 7 days)</option>
+                                    <option value="3">Unknown (Coma, other)</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form_label">
+                                <label>Citizen (of Canada)</label>
+                            </td>
+                            <td class="form_entry">
+                                <input type="radio" id="yes" name="citizen" value="0"><label for="yes">Yes</label>
+                                <input type="radio" id="no" name="citizen" value="1"><label for="no">No</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <input style="text-align:center; padding: 15px 100px;" type="button" value="Submit" onclick="patient_id(hospital.value, room.value, gender.value, disease_list.value, length_of_stay_list.value, citizen.value)">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p id="patient_id"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="Save" onclick="save()">Save</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

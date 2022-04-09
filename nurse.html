@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Nurse ID</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/general_overrides.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/menu_band.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/patient.css"/>
+
+
+<!--    <script type="text/javascript" src="slideshow.js"></script>-->
+    <script type="text/javascript" src="scripts/dataset.js"></script>
+</head>
+<body>
+    <ul class="menu_band">
+        <li class="menu_band"><a class="menu_band" href="patient.html">Patient</a></li>
+        <li class="menu_band"><a class="menu_band current_page">Nurse</a></li>
+        <li class="menu_band"><a class="menu_band" href="doctor.html">Doctor</a></li>
+        <li class="menu_band"><a class="menu_band" href="index.html">Home</a></li>
+        <li class="menu_band">
+            <div>
+                <label class="save_band" for="loaded_file">LOAD</label>
+                <input type="file" id="loaded_file" class="save_band" style="visibility:hidden" accept=".txt" onclick="load('nurses')">
+            </div>
+        </li>
+    </ul>
+    <table class="parent_table" style="text-align:center">
+        <tr>
+            <td>
+                <form>
+                    <table class="form_table">
+                        <tr>
+                            <td class="form_label">
+                                <label>Hospital:</label>
+                            </td>
+                            <td class="form_entry">
+                                <div>
+                                    <input type="radio" id="hospital_0" name="hospital" value="0" onchange="update_hospital(hospital.value, 'nurses')"><label for="hospital_0">Hospital 0</label>
+                                    <input type="radio" id="hospital_1" name="hospital" value="1" onchange="update_hospital(hospital.value, 'nurses')"><label for="hospital_1">Hospital 1</label>
+                                    <input type="radio" id="hospital_2" name="hospital" value="2" onchange="update_hospital(hospital.value, 'nurses')"><label for="hospital_2">Hospital 2</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form_label">
+                                <label>Nurse index: </label>
+                            </td>
+                            <td class="form_entry">
+                                <input type="radio" id="nurse_000" name="nurse_index" value="0"><label for="nurse_000">Nurse 0</label>
+                                <input type="radio" id="nurse_001" name="nurse_index" value="1"><label for="nurse_001">Nurse 1</label>
+                                <input type="radio" id="nurse_002" name="nurse_index" value="2"><label for="nurse_002">Nurse 2</label>
+                                <input type="radio" id="nurse_003" name="nurse_index" value="3"><label for="nurse_003">Nurse 3</label>
+                                <input type="radio" id="nurse_004" name="nurse_index" value="4"><label for="nurse_004">Nurse 4</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <input style="text-align:center; padding: 15px 100px;" type="button" value="Submit" onclick="nurse_id(hospital.value, nurse_index.value)">
+                </form>
+            <td>
+        </tr>
+        <tr>
+            <td>
+                <p id="nurse_id"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="Save" onclick="save()">Save</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
