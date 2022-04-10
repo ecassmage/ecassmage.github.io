@@ -2,7 +2,7 @@
     width: 100%;
 }
 .visible_table th, .visible_table td{
-    border:1px solid black;
+    border:1px solid white;
     padding: 1px 5px;
 }
 
@@ -18,7 +18,7 @@
     width: 100%;
 }
 .query_table table th, .query_table table td{
-    border:1px solid black;
+    border:1px solid white;
     padding: 1px 5px;
     text-align: left;
 }
