@@ -1,0 +1,30 @@
+.visible_table{
+    width: 100%;
+}
+.visible_table th, .visible_table td{
+    border:1px solid black;
+    padding: 1px 5px;
+}
+
+.visible_table .invisible_td{
+    border: 1px none;
+}
+
+.query_table{
+
+}
+
+.query_table table{
+    width: 100%;
+}
+.query_table table th, .query_table table td{
+    border:1px solid black;
+    padding: 1px 5px;
+    text-align: left;
+}
+.query_table ul{
+    text-align: left;
+}
+.query_table ul li{
+    margin: 15px 0;
+}
