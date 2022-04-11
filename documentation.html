@@ -175,65 +175,65 @@
     <div class="query_table">
         <table class="visible_table">
             <tr>
-<td><pre><code class="lang-sql"><span class="hljs-built_in">
-SELECT * FROM Patient<br>
-INNER JOIN Attending_Doctor ON<br>
-Patient.ID = Attending_Doctor.Patient_ID<br>
-WHERE Attending_Doctor.Doctor_ID LIKE &#60;doctor_id><br>
-AND primary_doctor LIKE &#60;primary_doctor>;<br>
+                <td><pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+SELECT</span> <span class="key">*</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+INNER</span> <span class="keyword">JOIN</span> <span class="entity">Attending_Doctor</span> <span class="keyword">ON</span><br><span class="entity">
+Patient</span>.<span class="key">ID</span> = <span class="entity">Attending_Doctor</span>.<span class="key">Patient_ID</span><br><span class="keyword">
+WHERE</span> <span class="entity">Attending_Doctor</span>.<span class="key">Doctor_ID</span> <span class="keyword">LIKE</span> &#60;<span class="key">doctor_id</span>><br><span class="keyword">
+AND</span> <span class="key">primary_doctor</span> <span class="keyword">LIKE</span> &#60;<span class="key">primary_doctor</span>>;<br>
 </span></code></pre></td>
                 <th class="invisible_td"></th>
-<td><pre><code class="lang-sql"><span class="hljs-built_in">
-SELECT DISTINCT Doctor.name, Doctor.ID FROM Doctor<br>
-INNER JOIN Patient ON<br>
-Doctor.ID = Patient.primary_doctor<br>
-INNER JOIN Attending_Doctor ON<br>
-Doctor.ID = Attending_Doctor.Doctor_ID<br>
-WHERE Patient.disease LIKE &#60;disease> OR<br>
-Attending_Doctor.Patient_ID IN<br>
-(SELECT ID FROM Patient<br>
-WHERE disease LIKE &#60;disease>)<br>
-UNION<br>
-SELECT DISTINCT NURSE.Name, NURSE.ID FROM NURSE<br>
-INNER JOIN Attending_Nurse ON<br>
-Nurse.ID = Attending_Nurse.Nurse_ID<br>
-WHERE Attending_Nurse.Patient_ID IN<br>
-(SELECT ID FROM Patient<br>
-WHERE disease LIKE &#60;disease>);<br>
-</span></code></pre></td>
-
-                <th class="invisible_td"></th>
-
-<td><pre><code class="lang-sql"><span class="hljs-built_in">
-SELECT DISEASE.NAME, COUNT(disease)<br>
-FROM Patient<br>
-INNER JOIN DISEASE ON<br>
-Patient.disease = DISEASE.id<br>
-GROUP BY DISEASE.NAME<br>
-HAVING COUNT (disease)=(<br>
-SELECT MAX(mycount)<br>
-FROM (<br>
-SELECT disease, COUNT(disease) mycount<br>
-FROM Patient<br>
-GROUP BY disease));<br>
+                <td><pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+SELECT</span> <span class="keyword">DISTINCT</span> <span class="entity">Doctor</span>.<span class="key">name</span>, <span class="entity">Doctor</span>.<span class="key">ID</span> <span class="keyword">FROM</span> <span class="entity">Doctor</span><br><span class="keyword">
+INNER</span> <span class="keyword">JOIN</span> <span class="entity">Patient</span> <span class="keyword">ON</span><br><span class="entity">
+Doctor</span>.<span class="key">ID</span> = <span class="entity">Patient</span>.<span class="key">primary_doctor</span><br><span class="keyword">
+INNER</span> <span class="keyword">JOIN</span> <span class="entity">Attending_Doctor</span> <span class="keyword">ON</span><br><span class="entity">
+Doctor</span>.<span class="key">ID</span> = <span class="entity">Attending_Doctor</span>.<span class="key">Doctor_ID</span><br><span class="keyword">
+WHERE</span> <span class="entity">Patient</span>.<span class="key">disease</span> <span class="keyword">LIKE</span> &#60;<span class="key">disease</span>> <span class="keyword">OR</span><br><span class="entity">
+Attending_Doctor</span>.<span class="key">Patient_ID</span> <span class="keyword">IN</span><br>
+(<span class="keyword">SELECT</span> <span class="key">ID</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+WHERE</span> <span class="key">disease</span> <span class="keyword">LIKE</span> &#60;<span class="key">disease</span>>)<br><span class="keyword">
+UNION</span><br><span class="keyword">
+SELECT</span> <span class="keyword">DISTINCT</span> <span class="entity">NURSE</span>.<span class="key">Name</span>, <span class="entity">NURSE</span>.<span class="key">ID</span> <span class="keyword">FROM</span> <span class="entity">NURSE</span><br><span class="keyword">
+INNER</span> <span class="keyword">JOIN</span> <span class="entity">Attending_Nurse</span> <span class="keyword">ON</span><br><span class="entity">
+Nurse</span>.<span class="key">ID</span> = <span class="entity">Attending_Nurse</span>.<span class="key">Nurse_ID</span><br><span class="keyword">
+WHERE</span> <span class="entity">Attending_Nurse</span>.<span class="key">Patient_ID</span> <span class="keyword">IN</span><br>
+(<span class="keyword">SELECT</span> <span class="key">ID</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+WHERE</span> <span class="key">disease</span> <span class="keyword">LIKE</span> &#60;<span class="key">disease</span>>);<br>
 </span></code></pre></td>
 
                 <th class="invisible_td"></th>
 
-<td><pre><code class="lang-sql"><span class="hljs-built_in">
-SELECT Patient.* FROM Patient<br>
-INNER JOIN Attending_Nurse ON<br>
-Patient.ID = Attending_Nurse.Patient_ID<br>
-WHERE Attending_Nurse.Nurse_ID LIKE &#60;nurse_id><br>
-AND primary_doctor LIKE &#60;primary_doctor>;<br>
+                <td><pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+SELECT</span> <span class="key">DISEASE</span>.<span class="key">NAME</span>, COUNT(<span class="key">disease</span>)<br><span class="keyword">
+FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+INNER</span> <span class="keyword">JOIN</span> <span class="key">DISEASE</span> <span class="keyword">ON</span><br><span class="entity">
+Patient</span>.<span class="key">disease</span> = <span class="key">DISEASE</span>.<span class="key">id</span><br><span class="keyword">
+GROUP</span> <span class="keyword">BY</span> <span class="key">DISEASE</span>.<span class="key">NAME</span><br><span class="keyword">
+HAVING</span> COUNT (<span class="key">disease</span>)=(<br><span class="keyword">
+SELECT</span> MAX(mycount)<br><span class="keyword">
+FROM</span> (<br><span class="keyword">
+SELECT</span> <span class="key">disease</span>, COUNT(<span class="key">disease</span>) mycount<br><span class="keyword">
+FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+GROUP</span> <span class="keyword">BY</span> <span class="key">disease</span>));<br>
+</span></code></pre></td>
+
+                <th class="invisible_td"></th>
+
+                <td><pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+SELECT</span> <span class="entity">Patient</span>.<span class="key">*</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+INNER</span> <span class="keyword">JOIN</span> <span class="entity">Attending_Nurse</span> <span class="keyword">ON</span><br><span class="entity">
+Patient</span>.<span class="key">ID</span> = <span class="entity">Attending_Nurse</span>.<span class="key">Patient_ID</span><br><span class="keyword">
+WHERE</span> <span class="entity">Attending_Nurse</span>.<span class="key">Nurse_ID</span> <span class="keyword">LIKE</span> &#60;<span class="key">nurse_id</span>><br><span class="keyword">
+AND</span> <span class="key">primary_doctor</span> <span class="keyword">LIKE</span> &#60;<span class="key">primary_doctor</span>>;<br>
 </span></code></pre></td>
                 <th class="invisible_td"></th>
-<td><pre><code class="lang-sql"><span class="hljs-built_in">
-SELECT Patient.* FROM Patient<br>
-INNER JOIN Hospital ON<br>
-PATIENT.Hospital_ID = Hospital.ID<br>
-WHERE Hospital.ID LIKE &#60;id> AND<br>
-PATIENT.disease LIKE &#60;disease>;<br>
+                <td><pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+SELECT</span> <span class="entity">Patient</span>.<span class="key">*</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+INNER</span> <span class="keyword">JOIN</span> <span class="entity">Hospital</span> <span class="keyword">ON</span><br><span class="entity">
+PATIENT</span>.<span class="key">Hospital_ID</span> = <span class="entity">Hospital</span>.<span class="key">ID</span><br><span class="keyword">
+WHERE</span> <span class="entity">Hospital</span>.<span class="key">ID</span> <span class="keyword">LIKE</span> &#60;<span class="key">id</span>> <span class="keyword">AND</span><br><span class="entity">
+PATIENT</span>.<span class="key">disease</span> <span class="keyword">LIKE</span> &#60;<span class="key">disease</span>>;<br>
 </span></code></pre></td>
             </tr>
             <tr>
