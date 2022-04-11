@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Website Documentation</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/home_page.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/general_overrides.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/menu_band.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/documentation_styles.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/sub_menu.css">
+</head>
+<body>
+    <ul class="menu_band">
+        <li class="menu_band"><a class="menu_band current_page">Documentation</a></li>
+        <li class="menu_band"><a class="menu_band" href="patient.html">Patient</a></li>
+        <li class="menu_band"><a class="menu_band" href="nurse.html">Nurse</a></li>
+        <li class="menu_band"><a class="menu_band" href="doctor.html">Doctor</a></li>
+        <li class="menu_band"><a class="menu_band" href="index.html">Home</a></li>
+    </ul>
+    <div class="header_band">
+        <hr>
+        <div style="text-align: center">
+            <ul class="sub_menu_band">
+                <li class="sub_menu_band"><a class="sub_menu_band" href="database_documentation.html">DATABASE</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="sql_insert_documentation.html">SQL INSERT GENERATOR</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="er_diagram_documentation.html">ER DIAGRAM</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="schema_documentation.html">SCHEMA</a></li>
+                <li class="sub_menu_band"><a class="current_sub_menu">SITE</a></li>
+            </ul>
+        </div>
+        <h1 class="information">Hospital Database Management System</h1>
+
+        <h2 class="information">Authors;</h2>
+        <h3 class="information">&emsp;Evan Morrison<br>
+            &emsp;Dante Masciotra<br>
+            &emsp;Zach Wasylyk</h3>
+        <hr>
+    </div>
+    <div class="full_body">
+        <h1>Check out: <a href="https://github.com/ecassmage/ecassmage.github.io">Website Repo</a> to see the source code</h1>
+        <p style="font-size: 25px">
+            &emsp;&emsp;To explain the website we first have the front homepage (index.html) which welcomes you with open arms.
+            There is nothing special about this since it was just built to be a welcoming page.
+            <br><br>
+            &emsp;&emsp;The next page Doctor (doctor.html) allows for the construction of ids based on some stats, while custon ids can be
+            added, this will allow for a more professional id to be created. You can also utilize a LOAD, Save feature to have it
+            remember previously created ids. I used this system instead of others because I originally didn't know how to interface
+            directly with the database and, even after teaching myself how to in the last couple days before submission. I did not know
+            how to properly complete this and allow you to see these interactions on your end without paying money to host the site or
+            locally hosting it. This lead to compromising with this setup.
+            <br><br>
+            &emsp;&emsp;Nurse (nurse.html) is the same as Doctor except it is for Nurse instead of Doctor.
+            <br><br>
+            &emsp;&emsp;Patient (patient.html) is the same as Doctor and Nurse except it has more options to take into account an entity
+            with more data being stored and with more potential variables to deal with.
+            <br><br>
+            &emsp;&emsp;Documentation (database_documentation.html) has many sub menus to go through but the gist is that they go over
+            the documentation that the name describes.
+        </p>
+    </div>
+</body>
+</html>

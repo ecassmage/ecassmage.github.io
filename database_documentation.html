@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database Documentation</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/home_page.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/general_overrides.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/menu_band.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/documentation_styles.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/sub_menu.css">
+</head>
+<body>
+    <ul class="menu_band">
+        <li class="menu_band"><a class="menu_band current_page">Documentation</a></li>
+        <li class="menu_band"><a class="menu_band" href="patient.html">Patient</a></li>
+        <li class="menu_band"><a class="menu_band" href="nurse.html">Nurse</a></li>
+        <li class="menu_band"><a class="menu_band" href="doctor.html">Doctor</a></li>
+        <li class="menu_band"><a class="menu_band" href="index.html">Home</a></li>
+    </ul>
+    <div class="header_band">
+        <hr>
+        <div style="text-align: center">
+            <ul class="sub_menu_band">
+                <li class="sub_menu_band"><a class="current_sub_menu">DATABASE</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="sql_insert_documentation.html">SQL INSERT GENERATOR</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="er_diagram_documentation.html">ER DIAGRAM</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="schema_documentation.html">SCHEMA</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="website_documentation.html">SITE</a></li>
+            </ul>
+        </div>
+        <h1 class="information">Hospital Database Management System</h1>
+
+        <h2 class="information">Authors;</h2>
+        <h3 class="information">&emsp;Evan Morrison<br>
+            &emsp;Dante Masciotra<br>
+            &emsp;Zach Wasylyk</h3>
+        <hr>
+    </div>
+    <div>
+        <div class="information" style="font-size: 18px">
+        <p>&emsp;&emsp; This project was completed by utilizing an ER diagram, schema, and ultimately implemented as a database.
+            We created a python program to automate the creation of the insert statements for the database&#39;s tables.
+            The ER diagram displays the relationships interpreted and thought necessary from the project question guidelines.
+            The schema is an extension of this where the tables of the schema are modeled after the relationships within the ER diagram.
+            The database is the final implementation of our ideas and do contain some differences of our original ER diagram and schema.
+            To demonstrate the relationships within the database, we designed advanced queries that utilize different sql functions such
+            as <code>INNER JOIN</code> and <code>UNION</code>.</p>
+        <p><br></p>
+        <p>&emsp;&emsp; The ER diagram has the <code>Hospital</code> at its center, everything stems from it.
+            The <code>Doctors</code> and <code>Nurses</code> have a <strong>1-to-N</strong> relationship and the <code>Patients</code> are admitted to the <code>Hospital</code> at a
+            <strong>1-to-N</strong> relationship.
+            <code>Attending Doctors</code> and <code>Attending Nurses</code> have an <strong>N-to-M</strong> relationship with the <code>Patients</code>, however, <code>Doctors</code> also have a
+            <strong>1-to-N</strong> relationship with <code>Patients</code> in the event that they are the <u>primary doctor</u>.
+            <code>Patients</code> possess an <strong>N-to-M</strong> relationship with <code>Diseases</code> and <code>Diseases</code> has an <strong>N-to-1</strong> relationship with <code>Treatments</code>.
+            The <code>Treatment</code> is connected to the <code>Bill</code> with an <strong>N-to-M</strong> relationship and the <code>Hospital</code> receives an <code>Invoice</code> which is
+            linked to the <code>Pharmacy</code> in an associative relationship.</p>
+
+        <table class="visible_table">
+            <tr>
+                <th>Treatment</th>
+                <td>
+                    <ul>
+                        <li>Stores data related to treatments for diseases</li>
+                        <li>Stores cost of treatment</li>
+                        <li>whether it is a drug</li>
+                        <li>name of the treatment</li>
+                        <li>id for identification</li>
+                    </ul>
+                </td>
+                <td class="invisible_td"></td>
+                <th>Disease</th>
+                <td>
+                    <ul>
+                        <li>Holds known/important Diseases here</li>
+                        <li>Contains a reference to a known treatment for it</li>
+                        <li>Keeps a name for little human brain to comprehend disease</li>
+                    </ul>
+                </td>
+                <td class="invisible_td"></td>
+                <th>Hospital</th>
+                <td>
+                    <ul>
+                        <li>Stores data on hospitals</li>
+                        <li>Max 3</li>
+                        <li>tracks locations of Hospital</li>
+                        <li>Has ID for fast lookup</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Doctor</th>
+                <td>
+                    <ul>
+                        <li>Stores Data on employee -> Doctor</li>
+                        <li>Keeps employee id</li>
+                        <li>Tracks main Hospital location</li>
+                    </ul>
+                </td>
+                <td class="invisible_td"></td>
+                <th>Nurse</th>
+                <td>
+                    <ul>
+                        <li>Stores Data on employee -> Nurse</li>
+                        <li>Keeps employee id</li>
+                        <li>Tracks main Hospital location</li>
+                    </ul>
+                </td>
+                <td class="invisible_td"></td>
+                <th>Patient</th>
+                <td>
+                    <ul>
+                        <li>Stores Data on employee -> Patient</li>
+                        <li>Keeps track of id so we can acquire payment later</li>
+                        <li>Tracks disease afflicted with</li>
+                        <li>Tracks important</li>
+                        <li>Gender, age, height are required for medical reason to prevent malpractice</li>
+                        <li>Tracks address using entity Patient Address (to handle multiple addresses)</li>
+                        <li>Tracks primary doctor and hospital currently located at</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Pharmacy</th>
+                <td>
+                    <ul>
+                        <li>Stores some information about the Pharmacies</li>
+                        <li>Keeps id to get in contact with.</li>
+                        <li>Holds a name for pharmacy so for professionalism</li>
+                    </ul>
+                </td>
+                <td class="invisible_td"></td>
+                <th>PatientAddress</th>
+                <td>
+                    <ul>
+                        <li>Stores information pertaining to Patient Address</li>
+                        <li>Such as: address number, street_name, postal_code etc</li>
+                        <li>Tracks patient information pertains to</li>
+                    </ul>
+                </td>
+                <td class="invisible_td"></td>
+                <th>Attending_Doctor</th>
+                <td>
+                    <ul>
+                        <li>Stores patient_id and doctor_id</li>
+                        <li>Used to deal with attending doctor relationships</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Attending_Nurse</th>
+                <td>
+                    <ul>
+                        <li>Stores patient_id and nurse_id</li>
+                        <li>Used to deal with attending nurse relationships</li>
+                    </ul>
+                </td>
+                <td class="invisible_td"></td>
+                <th>Bill</th>
+                <td>
+                    <ul>
+                        <li>Contains data for Patient Bill</li>
+                        <li>Contains reference to patient who holds this Bill</li>
+                        <li>Used to keep track of bill_instances for Patient.</li>
+                    </ul>
+                </td>
+                <td class="invisible_td"></td>
+                <th>Bill_Instance</th>
+                <td>
+                    <ul>
+                        <li>Contains information for treatments</li>
+                        <li>Keeps track of bill it applies to.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="invisible_td"></td>
+                <td class="invisible_td"></td>
+                <td class="invisible_td"></td>
+                <th>Invoice</th>
+                <td>
+                    <ul>
+                        <li>Is generated when Hospital wants to talk to Pharmacy</li>
+                        <li>Used to pass a bill to pharmacy while it calculates costs</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <div class="query_table">
+            <table class="visible_table">
+                <tr>
+                    <td style="width: 19%"><pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+    SELECT</span> <span class="key">*</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+    INNER</span> <span class="keyword">JOIN</span> <span class="entity">Attending_Doctor</span> <span class="keyword">ON</span><br><span class="entity">
+    Patient</span>.<span class="key">ID</span> = <span class="entity">Attending_Doctor</span>.<span class="key">Patient_ID</span><br><span class="keyword">
+    WHERE</span> <span class="entity">Attending_Doctor</span>.<span class="key">Doctor_ID</span> <span class="keyword">LIKE</span> &#60;<span class="key">doctor_id</span>><br><span class="keyword">
+    AND</span> <span class="key">primary_doctor</span> <span class="keyword">LIKE</span> &#60;<span class="key">primary_doctor</span>>;<br>
+    </span></code></pre></td>
+                    <td>
+                        <ul>
+                            <li>Computes a Patient that has a specific primary Doctor and a specific attending doctor</li>
+                            <li>Uses an inner join to connect the Patient table and Attending_Doctor </li>
+                            <li>Then uses Doctor Id's to find Patient</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+    SELECT</span> <span class="keyword">DISTINCT</span> <span class="entity">Doctor</span>.<span class="key">name</span>, <span class="entity">Doctor</span>.<span class="key">ID</span> <span class="keyword">FROM</span> <span class="entity">Doctor</span><br><span class="keyword">
+    INNER</span> <span class="keyword">JOIN</span> <span class="entity">Patient</span> <span class="keyword">ON</span><br><span class="entity">
+    Doctor</span>.<span class="key">ID</span> = <span class="entity">Patient</span>.<span class="key">primary_doctor</span><br><span class="keyword">
+    INNER</span> <span class="keyword">JOIN</span> <span class="entity">Attending_Doctor</span> <span class="keyword">ON</span><br><span class="entity">
+    Doctor</span>.<span class="key">ID</span> = <span class="entity">Attending_Doctor</span>.<span class="key">Doctor_ID</span><br><span class="keyword">
+    WHERE</span> <span class="entity">Patient</span>.<span class="key">disease</span> <span class="keyword">LIKE</span> &#60;<span class="key">disease</span>> <span class="keyword">OR</span><br><span class="entity">
+    Attending_Doctor</span>.<span class="key">Patient_ID</span> <span class="keyword">IN</span><br>
+    (<span class="keyword">SELECT</span> <span class="key">ID</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+    WHERE</span> <span class="key">disease</span> <span class="keyword">LIKE</span> &#60;<span class="key">disease</span>>)<br><span class="keyword">
+    UNION</span><br><span class="keyword">
+    SELECT</span> <span class="keyword">DISTINCT</span> <span class="entity">NURSE</span>.<span class="key">Name</span>, <span class="entity">NURSE</span>.<span class="key">ID</span> <span class="keyword">FROM</span> <span class="entity">NURSE</span><br><span class="keyword">
+    INNER</span> <span class="keyword">JOIN</span> <span class="entity">Attending_Nurse</span> <span class="keyword">ON</span><br><span class="entity">
+    Nurse</span>.<span class="key">ID</span> = <span class="entity">Attending_Nurse</span>.<span class="key">Nurse_ID</span><br><span class="keyword">
+    WHERE</span> <span class="entity">Attending_Nurse</span>.<span class="key">Patient_ID</span> <span class="keyword">IN</span><br>
+    (<span class="keyword">SELECT</span> <span class="key">ID</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+    WHERE</span> <span class="key">disease</span> <span class="keyword">LIKE</span> &#60;<span class="key">disease</span>>);<br>
+    </span></code></pre></td>
+                    <td>
+                        <ul>
+                            <li>Computes the nurses and doctors who have worked
+                                with patients suffering from a specific disease</li>
+                            <li>uses an inner join to navigate from the patient
+                                table to the Attending_Doctor table which finds the
+                                attending doctors</li>
+                            <li>The attending nurses are found via an inner join
+                                between the Patient and Attending_Nurse table</li>
+                            <li>All three pieces of information are found with
+                                select statements and later joined through the
+                                union operator</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+    SELECT</span> <span class="entity">DISEASE</span>.<span class="key">NAME</span>, COUNT(<span class="key">disease</span>)<br><span class="keyword">
+    FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+    INNER</span> <span class="keyword">JOIN</span> <span class="entity">DISEASE</span> <span class="keyword">ON</span><br><span class="entity">
+    Patient</span>.<span class="key">disease</span> = <span class="entity">DISEASE</span>.<span class="key">id</span><br><span class="keyword">
+    GROUP</span> <span class="keyword">BY</span> <span class="entity">DISEASE</span>.<span class="key">NAME</span><br><span class="keyword">
+    HAVING</span> COUNT (<span class="key">disease</span>)=(<br><span class="keyword">
+    SELECT</span> MAX(mycount)<br><span class="keyword">
+    FROM</span> (<br><span class="keyword">
+    SELECT</span> <span class="key">disease</span>, COUNT(<span class="key">disease</span>) mycount<br><span class="keyword">
+    FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+    GROUP</span> <span class="keyword">BY</span> <span class="key">disease</span>));<br>
+    </span></code></pre>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>computes the highest occurring disease among
+                                patients at all three hospitals</li>
+
+                            <li>Uses an inner join between the patient and disease
+                                tables and finishes with the count operator to find
+                                the highest value</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+    SELECT</span> <span class="entity">Patient</span>.<span class="key">*</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+    INNER</span> <span class="keyword">JOIN</span> <span class="entity">Attending_Nurse</span> <span class="keyword">ON</span><br><span class="entity">
+    Patient</span>.<span class="key">ID</span> = <span class="entity">Attending_Nurse</span>.<span class="key">Patient_ID</span><br><span class="keyword">
+    WHERE</span> <span class="entity">Attending_Nurse</span>.<span class="key">Nurse_ID</span> <span class="keyword">LIKE</span> &#60;<span class="key">nurse_id</span>><br><span class="keyword">
+    AND</span> <span class="key">primary_doctor</span> <span class="keyword">LIKE</span> &#60;<span class="key">primary_doctor</span>>;<br>
+    </span></code></pre>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Uses an inner join to find a patient who has a
+                                specific primary doctor and a specific attending
+                                nurse</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <pre><code class="lang-sql"><span class="hljs-built_in"><span class="keyword">
+    SELECT</span> <span class="entity">Patient</span>.<span class="key">*</span> <span class="keyword">FROM</span> <span class="entity">Patient</span><br><span class="keyword">
+    INNER</span> <span class="keyword">JOIN</span> <span class="entity">Hospital</span> <span class="keyword">ON</span><br><span class="entity">
+    PATIENT</span>.<span class="key">Hospital_ID</span> = <span class="entity">Hospital</span>.<span class="key">ID</span><br><span class="keyword">
+    WHERE</span> <span class="entity">Hospital</span>.<span class="key">ID</span> <span class="keyword">LIKE</span> &#60;<span class="key">id</span>> <span class="keyword">AND</span><br><span class="entity">
+    PATIENT</span>.<span class="key">disease</span> <span class="keyword">LIKE</span> &#60;<span class="key">disease</span>>;<br>
+    </span></code></pre>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>finds all patients who are suffering from a
+                                specific disease and is being treated at a
+                                specific hospital</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

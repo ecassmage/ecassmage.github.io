@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schema Documentation</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/home_page.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/general_overrides.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/menu_band.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/documentation_styles.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/sub_menu.css">
+</head>
+<body>
+    <ul class="menu_band">
+        <li class="menu_band"><a class="menu_band current_page">Documentation</a></li>
+        <li class="menu_band"><a class="menu_band" href="patient.html">Patient</a></li>
+        <li class="menu_band"><a class="menu_band" href="nurse.html">Nurse</a></li>
+        <li class="menu_band"><a class="menu_band" href="doctor.html">Doctor</a></li>
+        <li class="menu_band"><a class="menu_band" href="index.html">Home</a></li>
+    </ul>
+    <div class="header_band">
+        <hr>
+        <div style="text-align: center">
+            <ul class="sub_menu_band">
+                <li class="sub_menu_band"><a class="sub_menu_band" href="database_documentation.html">DATABASE</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="sql_insert_documentation.html">SQL INSERT GENERATOR</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="er_diagram_documentation.html">ER DIAGRAM</a></li>
+                <li class="sub_menu_band"><a class="current_sub_menu">SCHEMA</a></li>
+                <li class="sub_menu_band"><a class="sub_menu_band" href="website_documentation.html">SITE</a></li>
+            </ul>
+        </div>
+        <h1 class="information">Hospital Database Management System</h1>
+
+        <h2 class="information">Authors;</h2>
+        <h3 class="information">&emsp;Evan Morrison<br>
+            &emsp;Dante Masciotra<br>
+            &emsp;Zach Wasylyk</h3>
+        <hr>
+    </div>
+    <div class="full_body">
+        <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Treatment(<br>
+        id <span class="keyword">INT</span>,<br>
+        Is_drug <span class="keyword">INT</span> NOT NULL <span class="keyword">CHECK</span>(is_drug = 1 <span class="keyword">OR</span> is_drug = 0),<br>
+        name <span class="keyword">VARCHAR</span>(30) NOT NULL,<br>
+        cost FLOAT <span class="keyword">DEFAULT</span> 0,<br>
+        PRIMARY KEY (id),<br>
+        UNIQUE (name)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Disease(<br>
+        id <span class="keyword">INT</span>,<br>
+        name <span class="keyword">VARCHAR</span>(30) NOT NULL,<br>
+        treatment_id <span class="keyword">INT</span> NOT NULL,<br>
+        PRIMARY KEY (id),<br>
+        UNIQUE(name),<br>
+        FOREIGN KEY (treatment_id) <span class="keyword">REFERENCES</span> Treatment(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Hospital(<br>
+        id <span class="keyword">INT</span>,<br>
+        name <span class="keyword">VARCHAR</span>(50) NOT NULL,<br>
+        location <span class="keyword">VARCHAR</span>(50) NOT NULL,<br>
+        PRIMARY KEY (id),<br>
+        UNIQUE (name)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Doctor(<br>
+        id <span class="keyword">CHAR</span>(7),<br>
+        name <span class="keyword">VARCHAR</span>(30) NOT NULL,<br>
+        hospital_id <span class="keyword">INT</span> NOT NULL,<br>
+        PRIMARY KEY (id),<br>
+        FOREIGN KEY (hospital_id) <span class="keyword">REFERENCES</span> Hospital(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Nurse(<br>
+        id <span class="keyword">CHAR</span>(7),<br>
+        name <span class="keyword">VARCHAR</span>(30) NOT NULL,<br>
+        hospital_id <span class="keyword">INT</span> NOT NULL,<br>
+        PRIMARY KEY (id),<br>
+        FOREIGN KEY (hospital_id) <span class="keyword">REFERENCES</span> Hospital(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Patient(<br>
+        id <span class="keyword">CHAR</span>(15),<br>
+        name <span class="keyword">VARCHAR</span>(30) NOT NULL,<br>
+        disease <span class="keyword">INT</span> NOT NULL,<br>
+        arrival_date <span class="keyword">DATE</span> NOT NULL,<br>
+        phone_number <span class="keyword">VARCHAR</span>(10) NOT NULL,<br>
+        gender <span class="keyword">CHAR</span>(1) NOT NULL,<br>
+        age <span class="keyword">INT</span> NOT NULL,<br>
+        height <span class="keyword">INT</span> NOT NULL,<br>
+        primary_doctor <span class="keyword">CHAR</span>(7) NOT NULL,<br>
+        hospital_id <span class="keyword">INT</span> NOT NULL,<br>
+        PRIMARY KEY (id),<br>
+        FOREIGN KEY(primary_doctor) <span class="keyword">REFERENCES</span> Doctor(id),<br>
+        FOREIGN KEY(disease) <span class="keyword">REFERENCES</span> Disease(id),<br>
+        FOREIGN KEY(hospital_id) <span class="keyword">REFERENCES</span> Hospital(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Pharmacy(<br>
+        id <span class="keyword">INT</span>,<br>
+        name <span class="keyword">VARCHAR</span>(30) NOT NULL,<br>
+        PRIMARY KEY (id),<br>
+        UNIQUE(name)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> PatientAddress(<br>
+        address_number <span class="keyword">INT</span> NOT NULL,<br>
+        street_name <span class="keyword">VARCHAR</span>(30) NOT NULL,<br>
+        postal_code <span class="keyword">VARCHAR</span>(6) NOT NULL,<br>
+        province_state <span class="keyword">CHAR</span>(2) NOT NULL,<br>
+        country <span class="keyword">CHAR</span>(3) NOT NULL,<br>
+        patient_id <span class="keyword">CHAR</span>(15) NOT NULL,<br>
+        PRIMARY KEY(street_name, postal_code, province_state, country, patient_id),<br>
+        FOREIGN KEY(patient_id) <span class="keyword">REFERENCES</span> Patient(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Attending_Doctor(<br>
+        patient_id <span class="keyword">CHAR</span>(15) NOT NULL,<br>
+        doctor_id <span class="keyword">CHAR</span>(7) NOT NULL,<br>
+        PRIMARY KEY (patient_id, doctor_id),<br>
+        FOREIGN KEY (patient_id) <span class="keyword">REFERENCES</span> Patient(id),<br>
+        FOREIGN KEY (doctor_id) <span class="keyword">REFERENCES</span> Doctor(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Attending_Nurse(<br>
+        patient_id <span class="keyword">CHAR</span>(15) NOT NULL,<br>
+        nurse_id <span class="keyword">CHAR</span>(7) NOT NULL,<br>
+        PRIMARY KEY (patient_id, nurse_id),<br>
+        FOREIGN KEY (patient_id) <span class="keyword">REFERENCES</span> Patient(id),<br>
+        FOREIGN KEY (nurse_id) <span class="keyword">REFERENCES</span> Nurse(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Bill(<br>
+        id <span class="keyword">INT</span>,<br>
+        patient_id <span class="keyword">CHAR</span>(15) NOT NULL,<br>
+        PRIMARY KEY (id),<br>
+        FOREIGN KEY (patient_id) <span class="keyword">REFERENCES</span> Patient(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Bill_Instance(<br>
+        bill_id <span class="keyword">INT</span> NOT NULL,<br>
+        treatment_id <span class="keyword">INT</span> NOT NULL,<br>
+        PRIMARY KEY (bill_id, treatment_id),<br>
+        FOREIGN KEY (bill_id) <span class="keyword">REFERENCES</span> Bill(id),<br>
+        FOREIGN KEY (treatment_id) <span class="keyword">REFERENCES</span> Treatment(id)<br>
+        );<br><span class="keyword">
+CREATE</span> <span class="keyword">TABLE</span> Invoice(<br>
+        bill_id <span class="keyword">INT</span> NOT NULL,<br>
+        hospital_id <span class="keyword">INT</span> NOT NULL,<br>
+        pharmacy_id <span class="keyword">INT</span> NOT NULL,<br>
+        PRIMARY KEY (bill_id, hospital_id, pharmacy_id),<br>
+        FOREIGN KEY (bill_id) <span class="keyword">REFERENCES</span> Bill(id),<br>
+        FOREIGN KEY (hospital_id) <span class="keyword">REFERENCES</span> Hospital(id),<br>
+        FOREIGN KEY (pharmacy_id) <span class="keyword">REFERENCES</span> Pharmacy(id)<br>
+        );
+    </div>
+</body>
+</html>

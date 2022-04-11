@@ -2,7 +2,7 @@
     width: 100%;
 }
 .visible_table th, .visible_table td{
-    border:1px solid black;
+    border:1px solid white;
     padding: 1px 5px;
 }
 
@@ -14,19 +14,21 @@
 
 }
 
+.keyword, .entity, .key{
+    display: inline-block;
+    font-weight: bold;
+}
+
 .keyword{
     color: darkorange;
-    font-weight: bold;
 }
 
 .entity{
     color: darkgray;
-    font-weight: bold;
 }
 
 .key{
     color: purple;
-    font-weight: bold;
 }
 
 .query_table table{
@@ -42,4 +44,8 @@
 }
 .query_table ul li{
     margin: 15px 0;
+}
+
+.information{
+    padding-left: 5px;
 }

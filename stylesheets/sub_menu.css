@@ -1,0 +1,29 @@
+ul.sub_menu_band {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 800px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid black;
+}
+
+li.sub_menu_band {
+}
+
+li a.sub_menu_band, a.current_sub_menu {
+    float: left;
+    display: block;
+    color: var(--header_band_word_color);
+    text-align: center;
+    padding: 4px 25px;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+li a.current_sub_menu {
+    color:var(--header_band_word_current_page);
+}
+li a.sub_menu_band:hover{
+    background-color: var(--header_band_hover_go_to_page);
+}

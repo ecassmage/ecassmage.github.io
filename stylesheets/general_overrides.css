@@ -2,7 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     background: rgb(2,0,36);
-    background: linear-gradient(344deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(344deg, rgba(2,0,36,1) 25%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
@@ -12,5 +12,10 @@ html, body {
 table{
     margin-left: auto;
     margin-right: auto;
-    border: 2px dotted black;
+    border: 2px dotted white;
+}
+
+
+.header_band{
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
